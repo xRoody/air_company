@@ -3,7 +3,6 @@ package com.example.air_company.facades;
 import com.example.air_company.DTOs.ReviewDTO;
 import com.example.air_company.services.CompanyService;
 import com.example.air_company.services.ReviewService;
-import com.example.air_company.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,6 @@ import reactor.core.publisher.Mono;
 public class ReviewDTOFacadeImpl implements ReviewDTOFacade {
     private ReviewService reviewService;
     private CompanyService companyService;
-    private UserService userService;
 
     @Override
     public Mono<ReviewDTO> findById(Long id) {
@@ -25,8 +23,8 @@ public class ReviewDTOFacadeImpl implements ReviewDTOFacade {
                 .info(x.getInfo())
                 .reviewRating(x.getReviewRating())
                 .setRating(x.getSetRating())
-                .userDTO(userService.getUserById(x.getUserId()))
-                .ticketDTO(userService.getTicketById(x.getTicketId()))
+                .dateTime(x.getDateTime())
+                .ticketId(x.getTicketId())
                 .build());
     }
 
@@ -38,9 +36,10 @@ public class ReviewDTOFacadeImpl implements ReviewDTOFacade {
                         .company(companyService.findById(x.getCompanyId()))
                         .info(x.getInfo())
                         .reviewRating(x.getReviewRating())
+                        .dateTime(x.getDateTime())
                         .setRating(x.getSetRating())
-                        .userDTO(userService.getUserById(x.getUserId()))
-                        .ticketDTO(userService.getTicketById(x.getTicketId()))
+                        .userId(x.getUserId())
+                        .ticketId(x.getTicketId())
                         .build());
     }
 
@@ -52,9 +51,10 @@ public class ReviewDTOFacadeImpl implements ReviewDTOFacade {
                         .company(companyService.findById(x.getCompanyId()))
                         .info(x.getInfo())
                         .reviewRating(x.getReviewRating())
+                        .dateTime(x.getDateTime())
                         .setRating(x.getSetRating())
-                        .userDTO(userService.getUserById(x.getUserId()))
-                        .ticketDTO(userService.getTicketById(x.getTicketId()))
+                        .userId(x.getUserId())
+                        .ticketId(x.getTicketId())
                         .build());
     }
 }

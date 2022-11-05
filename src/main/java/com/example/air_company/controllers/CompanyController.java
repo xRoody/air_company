@@ -1,5 +1,6 @@
 package com.example.air_company.controllers;
 
+import com.example.air_company.DTOs.CompanyBasicDTO;
 import com.example.air_company.DTOs.CompanyDTO;
 import com.example.air_company.domain.Company;
 import com.example.air_company.facades.CompanyReviewFacade;
@@ -21,7 +22,7 @@ public class CompanyController {
     private CompanyReviewFacade companyReviewFacade;
 
     @GetMapping
-    public ResponseEntity<Flux<Company>> findAll(@RequestParam(value = "name", required = false) String name){
+    public ResponseEntity<Flux<CompanyBasicDTO>> findAll(@RequestParam(value = "name", required = false) String name){
         if (name==null) return ResponseEntity.ok(companyService.findAll());
         return ResponseEntity.ok(companyService.findByName(name));
     }

@@ -2,6 +2,7 @@ package com.example.air_company.services.Impl;
 
 import com.example.air_company.domain.Review;
 import com.example.air_company.repositories.ReviewRepo;
+import com.example.air_company.services.ReviewService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -11,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
 @Service
-public class ReviewServiceImpl {
+public class ReviewServiceImpl implements ReviewService {
     private ReviewRepo reviewRepo;
 
     public Flux<Review> findAll(){
@@ -46,6 +47,7 @@ public class ReviewServiceImpl {
             if (review.getSetRating()!=null) x.setSetRating(review.getSetRating());
             if (review.getTicketId()!=null) x.setTicketId(review.getTicketId());
             if (review.getUserId()!=null) x.setUserId(review.getUserId());
+            if (review.getDateTime()!=null) x.setDateTime(review.getDateTime());
             return reviewRepo.save(x);
         });
     }

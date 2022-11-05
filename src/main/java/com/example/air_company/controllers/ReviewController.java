@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 @AllArgsConstructor
 @RestController
+@RequestMapping("/review")
 public class ReviewController {
     private ReviewService reviewService;
     private ReviewDTOFacade reviewDTOFacade;

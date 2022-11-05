@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -14,9 +16,10 @@ import reactor.core.publisher.Mono;
 public class ReviewDTO {
     private Long id;
     private Mono<Company> company;
-    private Mono<UserDTO> userDTO;
+    private Integer userId;
     private String info;
     private Double reviewRating;
     private Double setRating;
-    private Mono<TicketDTO> ticketDTO;
+    private LocalDateTime dateTime;
+    private Long ticketId;
 }

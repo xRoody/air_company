@@ -7,6 +7,7 @@ import org.springframework.data.repository.reactive.ReactiveSortingRepository;
 import reactor.core.publisher.Flux;
 
 public interface ReviewRepo extends ReactiveSortingRepository<Review, Long> {
+
     Flux<Review> findAllByUserId(Integer id, Pageable pageable);
     Flux<Review> findAllByCompanyId(Integer id, Pageable pageable);
 }

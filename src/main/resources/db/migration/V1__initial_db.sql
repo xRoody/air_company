@@ -12,8 +12,7 @@ create table company_rew(
     info text,
     rew_rating numeric(2, 1) check (rew_rating<=5.0 and rew_rating>=0.0),
     set_rating integer check (set_rating<=5 and set_rating>=0),
-    company_id integer not null,
-    constraint fk_rew_company foreign key (company_id) references company(id) on update cascade on delete cascade
+    create_time timestamp with time zone not null
 );
 
 create table plane(
@@ -24,4 +23,4 @@ create table plane(
         constraint fk_plane_company foreign key (company_id) references company(id) on update cascade on delete cascade
 );
 
-create unique index on company_rew(user_id, ticket_id);
+create unique index on company_rew(ticket_id);

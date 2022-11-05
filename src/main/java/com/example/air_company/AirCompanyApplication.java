@@ -1,5 +1,6 @@
 package com.example.air_company;
 
+import com.example.air_company.services.CompanyService;
 import com.example.air_company.services.Impl.ReviewServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,8 @@ public class AirCompanyApplication {
 
     public static void main(String[] args) {
         ApplicationContext context=SpringApplication.run(AirCompanyApplication.class, args);
+        CompanyService companyService=context.getBean(CompanyService.class);
+        companyService.findByName("b").subscribe(x-> System.out.println(x));
     }
 
 }
